@@ -4,51 +4,39 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    data: []
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+  onLoad: function async() {
+    var that = this
+    app.getSeismicData(trust => {
+      let data = trust.data;
+      data.features.map((item,index)=>{
+        item.properties.time = new Date(item.properties.time).toLocaleString();
+        if (item.properties.mag <= 3){
+          item.properties.bgcolor = '#4574f0';
+          item.properties.magDivide = "微震";
         }
-      })
-    }
+        if (item.properties.mag > 3 && item.properties.mag <= 6) {
+          item.properties.bgcolor = '#FFAB37';
+          item.properties.magDivide = "有感"
+        }
+        if (item.properties.mag > 6) {
+          item.properties.bgcolor = '#F5455B';
+          item.properties.magDivide = "强震"
+        }
+        
+      });
+      that.setData({ data: data.features});
+    });
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  bindItemTap: function (detail){
+    console.log(detail.currentTarget.dataset.detail.geometry.coordinates);
+    let longitude= detail.currentTarget.dataset.detail.geometry.coordinates[0];
+    let latitude = detail.currentTarget.dataset.detail.geometry.coordinates[1];
+    let place = detail.currentTarget.dataset.detail.properties.place;
+    console.log(detail.currentTarget.dataset.detail.properties.place)
+    wx.navigateTo({
+      url: `../map/map?place=${place}&longitude=${longitude}&latitude=${latitude}`
     })
   }
 })

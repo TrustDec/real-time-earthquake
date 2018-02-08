@@ -1,21 +1,55 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
+.list-hover-style {
+  background:#f5f5f5;
+}
+.list-item {
+  height: 50pt;
+  flex-direction: row;
+  display:flex;
+  align-items:center;
+  margin:0 5px 5px 5px;
+  box-shadow: 0px 2px 2px -1px rgba(0, 0, 0, 0.2);
+}
+.list-item-mag {
+  width: 100px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content: center; 
+}
+.list-item-mag-fenlei {
+  width: 40pt;
+  height:40pt;
+  color: #fff;
+  font-size: 17px;
+  font-family:Microsoft Yahei;
+  font-weight: 'bolder';
+  background:#4574f0;
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content: center; 
+  text-shadow: 0 0 0.1em #eee,0 0 0.1em #eee;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.list-item-details {
+  display:flex;
+  height:40pt;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
+  justify-content:space-between;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.list-item-time {
+  font-size: 14px;
+  color:#999;
+  text-shadow: 0 0 0.2em #ddd,0 0 0.2em #ddd;
 }
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.list-item-place {
+  color:#444;
+  display: -webkit-box ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1; 
+  text-shadow: 0 0 0.2em #ddd,0 0 0.2em #ddd;
 }

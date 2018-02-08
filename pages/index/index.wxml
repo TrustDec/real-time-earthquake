@@ -1,13 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view bindtap='bindItemTap' data-detail="{{data[index]}}" wx:for="{{data}}" wx:key="{{index}}" class='list-item' hover-stay-time="50" hover-class="list-hover-style">
+    <view class='list-item-mag'>
+      <view class='list-item-mag-fenlei' style='background:{{data[index].properties.bgcolor}}'>
+        {{data[index].properties.mag}}
+      </view>
+    </view>
+    <view class='list-item-details'>
+      <view class='list-item-place-box'>
+        <text class='list-item-place'>{{data[index].properties.place}}</text>
+      </view>
+      <view class='list-item-time'>{{data[index].properties.time}}</view>
+    </view>
   </view>
 </view>
