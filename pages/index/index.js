@@ -9,6 +9,10 @@ Page({
   onLoad: function async() {
     var that = this
     app.getSeismicData(trust => {
+      if (!trust.request) {
+        that.setData({ data: null });
+        return
+      }
       let data = trust.data;
       data.features.map((item,index)=>{
         item.properties.time = new Date(item.properties.time).toLocaleString();

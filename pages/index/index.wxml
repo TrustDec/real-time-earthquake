@@ -1,16 +1,21 @@
 <!--index.wxml-->
 <view class="container">
+<view wx:if="{{data}}">
   <view bindtap='bindItemTap' data-detail="{{data[index]}}" wx:for="{{data}}" wx:key="{{index}}" class='list-item' hover-stay-time="50" hover-class="list-hover-style">
-    <view class='list-item-mag'>
-      <view class='list-item-mag-fenlei' style='background:{{data[index].properties.bgcolor}}'>
-        {{data[index].properties.mag}}
+      <view class='list-item-mag'>
+        <view class='list-item-mag-fenlei' style='background:{{data[index].properties.bgcolor}}'>
+          {{data[index].properties.mag}}
+        </view>
+      </view>
+      <view class='list-item-details'>
+        <view class='list-item-place-box'>
+          <text class='list-item-place'>{{data[index].properties.place}}</text>
+        </view>
+        <view class='list-item-time'>{{data[index].properties.time}}</view>
       </view>
     </view>
-    <view class='list-item-details'>
-      <view class='list-item-place-box'>
-        <text class='list-item-place'>{{data[index].properties.place}}</text>
-      </view>
-      <view class='list-item-time'>{{data[index].properties.time}}</view>
-    </view>
-  </view>
+</view>
+<view wx:else> 
+  服务器正在维护/升级，请稍后再试
+</view> 
 </view>
