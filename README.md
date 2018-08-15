@@ -10,7 +10,7 @@
 
 <div align="center">
     <img src="./assets/home.png" alt="screenshot" title="screenshot" width="220"  >
-    <img src="./assets/statistics.png" alt="screenshot" title="screenshot" width="220" >
+    <img src="./assets/statistics.png" alt="screenshot" title="screenshot" width="220" style="margin:0 10px">
     <img src="./assets/map.png" alt="screenshot" title="screenshot" width="220" >
     
 </div>
