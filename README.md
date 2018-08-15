@@ -1,12 +1,10 @@
-### Global real-time seismic small program
+### 地震小程序
 
 <div align="center">
     <img src="./assets/ercode.jpg" alt="screenshot" title="screenshot" width="100">
 </div>
 
-> 👉 Welcome to participate enthusiastically
-
-
+> 👉 欢迎热情参与
 
 <div align="center">
     <img src="./assets/home.png" alt="screenshot" title="screenshot" width="220"  style="margin:0 10px;box-shadow: 10px 10px 10px 10px red;">
